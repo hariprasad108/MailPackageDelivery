@@ -1,0 +1,8 @@
+com\deepam\bsc\MailPackageApplication.class
+com\deepam\bsc\repository\MailPackage.class
+com\deepam\bsc\io\MailPackageInputOutput.class
+com\deepam\bsc\quartz\QuartzJob.class
+com\deepam\bsc\services\PackageCollection.class
+com\deepam\bsc\io\MailPackageLineParser.class
+com\deepam\bsc\quartz\QuartzScheduler.class
+com\deepam\bsc\services\MailPackageService.class
