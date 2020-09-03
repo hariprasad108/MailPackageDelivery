@@ -29,7 +29,7 @@ Output Every minute print out output as simple formatted text of values entered 
 \<postal code: fixed 5 digits\>\<space\>\<total weight: fixed 3 decimal places, . (dot) as decimal separator\>
 
 
-Instructions for buiding
+Instructions for building
 ------------------------
 
 Program is developed in Eclipse IDE, for compilation you need only `maven`
