@@ -68,7 +68,7 @@ public class MailPackageApplication {
 
 		if (args.length > 0) {
 			fileName = args[0];
-			System.out.println("File path: " + fileName);
+			// System.out.println("File path: " + fileName);
 			try {
 				application.readFile(fileName);
 			} catch (IOException e) {
