@@ -11,6 +11,13 @@ import com.deepam.bsc.quartz.QuartzScheduler;
 import com.deepam.bsc.repository.MailPackage;
 import com.deepam.bsc.services.MailPackageService;
 
+/**
+ * 
+ * @author hariprasad
+ * 
+ *         Main class for Package application
+ *
+ */
 public class MailPackageApplication {
 
 	private MailPackageService mailService;

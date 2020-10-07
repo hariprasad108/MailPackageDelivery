@@ -1,8 +1,7 @@
 package com.deepam.bsc.services;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import com.deepam.bsc.repository.MailPackage;
@@ -17,30 +16,22 @@ public enum PackageCollection {
 
 	INSTANCE;
 
-	private List<MailPackage> packages = new ArrayList<>();
-
-	private Map<String, MailPackage> packagesSummary = new HashMap<>();
-
-	public List<MailPackage> getPackages() {
-		return packages;
-	}
-
-	public void addPackage(MailPackage mailPackage) {
-		packages.add(mailPackage);
-	}
+	private Map<String, MailPackage> packagesSummary = Collections.synchronizedMap(new HashMap<>());
 
 	public Map<String, MailPackage> getPackagesSummary() {
 		return packagesSummary;
 	}
 
 	public void addToPackagesSummary(String postalCode, MailPackage mailPackage) {
-		if (packagesSummary.containsKey(postalCode)) {
-			MailPackage actMailPackage = packagesSummary.get(postalCode);
-			MailPackage sumMailPackage = new MailPackage(postalCode,
-					actMailPackage.getWeightKg().add(mailPackage.getWeightKg()));
-			packagesSummary.put(postalCode, sumMailPackage);
-		} else
-			packagesSummary.put(postalCode, mailPackage);
+		synchronized (packagesSummary) {
+			if (packagesSummary.containsKey(postalCode)) {
+				MailPackage actMailPackage = packagesSummary.get(postalCode);
+				MailPackage sumMailPackage = new MailPackage(postalCode,
+						actMailPackage.getWeightKg().add(mailPackage.getWeightKg()));
+				packagesSummary.put(postalCode, sumMailPackage);
+			} else
+				packagesSummary.put(postalCode, mailPackage);
+		}
 	}
 
 }
